@@ -163,7 +163,7 @@ footer {
    --- GESTION DES PERSONNAGES VIVANTS & ANIMÉS (LES GARDES) ---
    ========================================================================== */
 
-/* 1. L'Intelligence Centrale (Optimus Girl dans le Header) */
+/* 1. L'Intelligence Centrale (Optimus Girl) - Mouvement de Scanner Circulaire */
 .img-avatar {
     width: 120px;
     height: 120px;
@@ -173,51 +173,56 @@ footer {
     object-fit: cover;
     margin-bottom: 10px;
     
-    /* ANIMATION : Battement de cœur Energon */
-    animation: avatarPulse 4s infinite alternate ease-in-out;
+    /* ANIMATION : Battement + Rotation légère */
+    animation: avatarPatrol 6s infinite ease-in-out;
 }
 
-@keyframes avatarPulse {
-    0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 26, 26, 0.5); filter: brightness(1); }
-    100% { transform: scale(1.1); box-shadow: 0 0 35px rgba(255, 26, 26, 1); filter: brightness(1.2); }
+@keyframes avatarPatrol {
+    0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+    50% { transform: scale(1.1) rotate(5deg); filter: brightness(1.3) drop-shadow(0 0 30px #ff1a1a); }
+    100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
 }
 
-/* 2. Les Sentinelles Flottantes (Les Miku sur les côtés) */
+/* 2. Les Sentinelles (Miku) - Patrouille de Zone Horizontale et Verticale */
 .floating-sentinel {
     position: absolute;
-    width: 100px;
+    width: 110px;
     height: auto;
-    opacity: 0.8;
-    z-index: 10;
+    opacity: 0.9;
+    z-index: 100;
     pointer-events: none;
-    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
 }
 
 .s-left { 
-    left: -120px; 
-    top: -20px; 
-    /* ANIMATION : Flottaison Drone + Scan Alerte */
-    animation: droneFloat 4s infinite alternate-reverse ease-in-out, scanAlerte 1s infinite alternate; 
+    left: -130px; 
+    top: 0; 
+    /* PATROUILLE : Va-et-vient agressif vers le centre */
+    animation: patrolLeft 8s infinite ease-in-out; 
+}
+
+@keyframes patrolLeft {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(40px, 100px) rotate(15deg); } /* S'approche du code */
+    50% { transform: translate(0, 200px) rotate(0deg); }
+    75% { transform: translate(-30px, 100px) rotate(-15deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
 
 .s-right { 
-    right: -120px; 
-    top: -20px; 
-    /* ANIMATION : Flottaison Drone + Scan Alerte (Inversé) */
-    animation: droneFloat 4s infinite alternate ease-in-out, scanAlerte 1s infinite alternate-reverse; 
+    right: -130px; 
+    top: 0; 
+    /* PATROUILLE : Mouvement en S inversé */
+    animation: patrolRight 10s infinite ease-in-out; 
 }
 
-@keyframes droneFloat {
-    from { transform: translateY(-20px) rotate(-2deg); }
-    to { transform: translateY(20px) rotate(2deg); }
+@keyframes patrolRight {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-50px, 150px) scale(1.15); } /* Zoom de scan */
+    66% { transform: translate(30px, 300px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
 }
 
-@keyframes scanAlerte {
-    0% { filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5)); }
-    100% { filter: drop-shadow(0 0 20px rgba(255, 26, 26, 1)); }
-}
-
-/* 3. Le Gardien de Sécurité du Projet (Le Lapin sur le projet) */
+/* 3. Le Gardien Lapin (Sécurité) - Scan de précision saccadé */
 .security-guardian {
     float: right;
     width: 85px;
@@ -227,8 +232,8 @@ footer {
     border: 1px solid #ff1a1a;
     box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
     
-    /* ANIMATION : Pulsation de garde active */
-    animation: guardActive 2s infinite alternate ease-in-out;
+    /* ANIMATION : Mouvement robotique saccadé */
+    animation: robotGuard 3s steps(4) infinite alternate;
 }
 
 .security-guardian img {
@@ -236,9 +241,10 @@ footer {
     height: auto;
 }
 
-@keyframes guardActive {
-    0% { opacity: 0.7; transform: scale(1); border-color: rgba(0, 255, 255, 0.3); }
-    100% { opacity: 1; transform: scale(1.05); border-color: #ff1a1a; box-shadow: 0 0 15px #ff1a1a; }
+@keyframes robotGuard {
+    0% { transform: translateX(0); border-color: #00ffff; }
+    50% { transform: translateX(10px) translateY(-5px); }
+    100% { transform: translateX(-10px); border-color: #ff1a1a; box-shadow: 0 0 20px #ff1a1a; }
 }
 
 /* Ligne de scan robotique */
@@ -260,7 +266,7 @@ body::before {
     100% { top: 105%; }
 }
 
-/* Responsive : On cache les gardiens latéraux sur petit écran pour la lisibilité */
+/* Responsive */
 @media (max-width: 1150px) {
     .floating-sentinel { display: none; }
 }
