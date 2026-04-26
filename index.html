@@ -3,50 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Gatatechfree</title>
+    <title>Gatatechfree | Architect of Optimus</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Gatatechfree</h1>
-        <p>Étudiant en Brevet Technique (BT)</p>
+        <div class="identity-block">
+            <span class="rank-status">SYSTEM ARCHITECT - ONLINE</span>
+            <h1 class="main-title">Gatatechfree</h1>
+            <div class="divider"></div>
+            <p class="subtitle">Créateur de l'écosystème <strong>Optimus Prime</strong></p>
+        </div>
     </header>
 
     <section id="expertises">
-        <h2>Expertises Techniques</h2>
+        <h2>Protocoles Maîtrisés</h2>
         <div class="grille-competences">
-            <div class="badge">Développement PHP 8 (XAMPP)</div>
-            <div class="badge">Gestion SQL (MariaDB)</div>
-            <div class="badge">Architecture Client-Serveur</div>
-            <div class="badge">Notions en Kotlin</div>
-            <div class="badge">Versionnement Git / GitHub</div>
+            <div class="badge">PHP 8 Core (XAMPP)</div>
+            <div class="badge">MariaDB Database Engine</div>
+            <div class="badge">Client-Server Architecture</div>
+            <div class="badge">Kotlin Mobile Dev</div>
+            <div class="badge">Git / GitHub Versioning</div>
         </div>
     </section>
 
     <section id="projets">
-        <h2>Mes Réalisations</h2>
+        <h2>Unités de Commandement</h2>
         
-        <div class="projet">
-            <h3>Système de Gestion de Flotte : Optimus Admin</h3>
-            <p><strong>Environnement technique :</strong> PHP 8.x, MariaDB (XAMPP), Architecture Client-Serveur.</p>
+        <div class="projet active-system">
+            <div class="system-header">
+                <h3>Optimus Admin : Fleet Management System</h3>
+                <span class="status-light">ACTIVE</span>
+            </div>
+            
+            <p><strong>Spécifications :</strong> PHP 8.x, MariaDB (XAMPP), Backend Architecture.</p>
             
             <div class="flex-images">
-                <img src="dashboard.png" alt="Dashboard Optimus Admin" class="img-projet">
-                <img src="bdd.png" alt="Structure base de données" class="img-projet">
+                <img src="dashboard.png" alt="Interface Optimus Admin" class="img-projet">
+                <img src="bdd.png" alt="Core Database Structure" class="img-projet">
             </div>
 
-            <p><strong>Description :</strong> Développement d'une interface d'administration complète pour la gestion de véhicules et de transactions. Ce projet démontre ma capacité à concevoir des systèmes back-end robustes en environnement local.</p>
+            <p class="project-desc">En tant que concepteur principal, j'ai bâti cette interface d'administration pour centraliser la gestion de flotte. Ce système est le cœur opérationnel de l'univers Optimus, gérant dynamiquement les flux de données complexes en temps réel.</p>
             
-            <ul>
-                <li>Conception de la base de données <code>optimus_db</code> (tables users, vehicles, transactions).</li>
-                <li>Développement d'un tableau de bord dynamique avec suivi des unités en mission.</li>
-                <li>Sécurisation des accès et gestion des sessions utilisateurs.</li>
+            <ul class="tech-specs">
+                <li>Ingénierie de la base <code>optimus_db</code> (Users, Vehicles, Transactions).</li>
+                <li>Tableau de bord de surveillance des unités en mission.</li>
+                <li>Sécurisation des protocoles d'accès et sessions chiffrées.</li>
             </ul>
         </div>
     </section>
 
     <footer>
-        <p>Contact : [Votre Email ici]</p>
+        <p>COMMAND CENTER : [Votre Email ici]</p>
+        <p class="copy">© 2026 GATATECHFREE - ALL SYSTEMS OPERATIONAL</p>
     </footer>
 </body>
 </html>
