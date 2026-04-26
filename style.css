@@ -28,18 +28,21 @@ body {
 header { 
     background: linear-gradient(135deg, #0d1a2e 0%, #1c3d5a 100%);
     color: white; 
-    padding: 60px 20px; /* Plus d'espace pour le titre monumental */
+    padding: 60px 20px; 
     text-align: center; 
     border-radius: 8px; 
     border: 2px solid #0040ff; 
     box-shadow: 0 0 30px rgba(0, 64, 255, 0.4);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* --- TITRE MONUMENTAL GATATECHFREE --- */
 header h1 {
-    margin: 0;
-    font-size: 4.5em; /* Grandeur maîtrisée */
+    margin: 10px 0;
+    font-size: 4.5em; 
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 15px;
@@ -73,6 +76,7 @@ h2 {
 }
 
 .projet { 
+    position: relative;
     background: rgba(13, 26, 46, 0.9);
     padding: 25px; 
     margin: 20px 0; 
@@ -124,6 +128,7 @@ code {
 }
 
 .grille-competences { 
+    position: relative;
     display: flex; 
     gap: 12px; 
     flex-wrap: wrap; 
@@ -154,6 +159,57 @@ footer {
     letter-spacing: 2px;
 }
 
+/* --- GESTION DES PERSONNAGES VIVANTS --- */
+
+.img-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #ff1a1a;
+    box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
+    object-fit: cover;
+    margin-bottom: 10px;
+    animation: avatarPulse 4s infinite alternate;
+}
+
+@keyframes avatarPulse {
+    from { transform: scale(1); box-shadow: 0 0 15px rgba(255, 26, 26, 0.5); }
+    to { transform: scale(1.08); box-shadow: 0 0 35px rgba(255, 26, 26, 1); }
+}
+
+.floating-sentinel {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    opacity: 0.8;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+}
+
+.s-left { left: -120px; top: -20px; animation: floatAnim 3s infinite alternate; }
+.s-right { right: -120px; top: -20px; animation: floatAnim 3s infinite alternate-reverse; }
+
+@keyframes floatAnim {
+    from { transform: translateY(-15px); }
+    to { transform: translateY(15px); }
+}
+
+.security-guardian {
+    float: right;
+    width: 85px;
+    margin-left: 15px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #ff1a1a;
+    box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
+}
+
+.security-guardian img {
+    width: 100%;
+    height: auto;
+}
+
 /* Ligne de scan robotique */
 body::before {
     content: "";
@@ -171,4 +227,9 @@ body::before {
 @keyframes scanning {
     0% { top: -5%; }
     100% { top: 105%; }
+}
+
+/* Responsive : On cache les gardiens latéraux sur petit écran */
+@media (max-width: 1150px) {
+    .floating-sentinel { display: none; }
 }
