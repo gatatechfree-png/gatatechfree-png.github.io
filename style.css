@@ -7,6 +7,7 @@ body {
     max-width: 900px; 
     margin: auto; 
     padding: 20px; 
+    overflow-x: hidden;
     
     /* FOND : Espace profond + Pulsation sombre */
     background-color: #02050a;
@@ -27,19 +28,39 @@ body {
 header { 
     background: linear-gradient(135deg, #0d1a2e 0%, #1c3d5a 100%);
     color: white; 
-    padding: 40px 20px; 
+    padding: 60px 20px; /* Plus d'espace pour le titre monumental */
     text-align: center; 
     border-radius: 8px; 
-    border: 2px solid #0040ff; /* Bleu Optimus */
-    box-shadow: 0 0 20px rgba(0, 64, 255, 0.4);
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    border: 2px solid #0040ff; 
+    box-shadow: 0 0 30px rgba(0, 64, 255, 0.4);
+    position: relative;
 }
 
+/* --- TITRE MONUMENTAL GATATECHFREE --- */
 header h1 {
     margin: 0;
-    color: #ff1a1a; /* Rouge Leader */
-    text-shadow: 0 0 10px rgba(255, 26, 26, 0.8);
+    font-size: 4.5em; /* Grandeur maîtrisée */
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    background: linear-gradient(to bottom, #ff1a1a, #8b0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.8));
+    animation: titleGlow 3s infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.6)); }
+    to { filter: drop-shadow(0 0 25px rgba(255, 26, 26, 1)); }
+}
+
+header p {
+    font-size: 1.2em;
+    letter-spacing: 4px;
+    color: #00ffff;
+    text-transform: uppercase;
+    margin-top: 15px;
 }
 
 h2 { 
@@ -48,20 +69,18 @@ h2 {
     padding-bottom: 10px; 
     margin-top: 40px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .projet { 
     background: rgba(13, 26, 46, 0.9);
-    padding: 20px; 
+    padding: 25px; 
     margin: 20px 0; 
     border-left: 5px solid #ff1a1a; 
     border-right: 1px solid #0040ff;
     border-top: 1px solid #0040ff;
     border-bottom: 1px solid #0040ff;
     border-radius: 4px; 
-    box-shadow: 0 0 15px rgba(0, 64, 255, 0.2);
-    
-    /* Animation de pulsation du bloc */
     animation: blockGlow 4s infinite alternate;
 }
 
@@ -84,28 +103,29 @@ h2 {
     border-radius: 4px;
     flex: 1;
     min-width: 300px;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .img-projet:hover {
     transform: scale(1.05) rotate(1deg);
     border-color: #ff1a1a;
+    box-shadow: 0 0 25px rgba(255, 26, 26, 0.6);
 }
 
 code {
-    background: rgba(255, 26, 26, 0.1);
-    padding: 2px 5px;
+    background: rgba(255, 26, 26, 0.15);
+    padding: 2px 8px;
     border-radius: 3px;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9em;
+    font-size: 0.95em;
     color: #ff1a1a;
-    border: 1px solid rgba(255, 26, 26, 0.3);
+    border: 1px solid rgba(255, 26, 26, 0.4);
 }
 
 .grille-competences { 
     display: flex; 
-    gap: 10px; 
+    gap: 12px; 
     flex-wrap: wrap; 
     margin: 20px 0; 
 }
@@ -113,23 +133,25 @@ code {
 .badge { 
     background: #0d1a2e; 
     color: #00ffff; 
-    padding: 8px 15px; 
-    border-radius: 0; /* Aspect plus angulaire/robotique */
-    font-size: 0.85em; 
+    padding: 10px 18px; 
+    border-radius: 0; 
+    font-size: 0.9em; 
     border: 1px solid #0040ff;
     border-left: 4px solid #ff1a1a;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 footer {
-    margin-top: 40px;
-    padding: 20px;
+    margin-top: 60px;
+    padding: 30px;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1em;
     color: #00ffff;
-    border-top: 1px solid #0040ff;
-    background: rgba(13, 26, 46, 0.5);
+    border-top: 1px solid #ff1a1a;
+    background: rgba(13, 26, 46, 0.7);
+    letter-spacing: 2px;
 }
 
 /* Ligne de scan robotique */
@@ -139,14 +161,14 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px;
-    background: rgba(0, 255, 255, 0.5);
-    box-shadow: 0 0 10px #00ffff;
+    height: 3px;
+    background: rgba(0, 255, 255, 0.6);
+    box-shadow: 0 0 15px #00ffff;
     z-index: 9999;
-    animation: scanning 4s linear infinite;
+    animation: scanning 5s linear infinite;
 }
 
 @keyframes scanning {
-    0% { top: 0%; }
-    100% { top: 100%; }
+    0% { top: -5%; }
+    100% { top: 105%; }
 }
