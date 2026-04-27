@@ -1,150 +1,180 @@
-/* --- UNIVERS OPTIMUS PRIME : MISSION PROTOCOL v2.0 --- */
-
-:root {
-    --energon-cyan: #00ffff;
-    --alert-red: #ff1a1a;
-    --deep-space: #02050a;
-    --system-blue: #0040ff;
-    --panel-alpha: rgba(13, 26, 46, 0.9);
-}
+/* --- UNIVERS OPTIMUS PRIME : MISSION PROTOCOL v4.0 (PIXEL & LASER) --- */
 
 body { 
-    font-family: 'Segoe UI', Roboto, 'Oxygen', sans-serif; 
+    font-family: 'Consolas', 'Courier New', monospace; /* Police code pour alignement ASCII */
     line-height: 1.6; 
-    color: var(--energon-cyan);
-    max-width: 1000px; /* Légèrement élargi pour le confort */
+    color: #00ffff;
+    max-width: 900px; 
     margin: auto; 
     padding: 20px; 
     overflow-x: hidden;
-    background-color: var(--deep-space);
+    background-color: #02050a;
     background-image: 
-        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
-    background-size: 40px 40px; /* Grille de précision tactique */
-    animation: backgroundPulse 12s infinite alternate ease-in-out;
+        linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: backgroundPulse 10s infinite alternate;
 }
 
 @keyframes backgroundPulse {
     0% { background-color: #02050a; }
-    100% { background-color: #08111d; }
+    100% { background-color: #0a1321; }
 }
 
-/* --- SCANLINE GLOBAL SYSTEM --- */
+/* ==========================================================================
+   --- ARCHITECTURE ZERO-IMAGE (ASCII VESSELS) ---
+   ========================================================================== */
+
+/* On cache les images physiques pour les remplacer par du texte */
+.img-avatar, .floating-sentinel, .security-guardian img { display: none !important; }
+
+/* 1. VAISSEAU AMIRAL (Avatar) */
+.main-avatar-container::before {
+    content: "    | \A   --o-- \A  [#####]"; /* Dessin du vaisseau amiral */
+    white-space: pre;
+    display: block;
+    color: #ff1a1a;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 0 15px #ff1a1a;
+    animation: avatarPatrol 4s infinite ease-in-out;
+}
+
+/* 2. SENTINELLES (Miku) EN CARACTÈRES */
+.floating-sentinel { display: block !important; }
+
+.s-left::before {
+    content: "<[SCAN-01]>";
+    font-size: 14px;
+    color: #00ffff;
+    animation: patrolLeft 8s infinite ease-in-out;
+}
+
+.s-right::before {
+    content: "[[RADAR-02]]";
+    font-size: 14px;
+    color: #00ffff;
+    animation: patrolRight 10s infinite ease-in-out;
+}
+
+/* 3. LE GARDIEN DE SÉCURITÉ (LASER TOWER) */
+.security-guardian {
+    float: right;
+    width: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.security-guardian::before {
+    content: "[!]";
+    display: block;
+    color: #ff1a1a;
+    font-weight: bold;
+    animation: robotGuard 2s steps(4) infinite alternate;
+}
+
+/* LE TIR LASER VERTICAL */
+.security-guardian::after {
+    content: "";
+    display: block;
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(to bottom, #ff1a1a, transparent);
+    margin-left: 10px;
+    box-shadow: 0 0 10px #ff1a1a;
+    animation: laserVertical 0.3s infinite alternate;
+}
+
+@keyframes laserVertical {
+    from { opacity: 0.3; height: 140px; }
+    to { opacity: 1; height: 160px; }
+}
+
+/* ==========================================================================
+   --- INTERFACE & TITRES ---
+   ========================================================================== */
+
+header h1 {
+    font-size: 3.5em; 
+    letter-spacing: 10px;
+    background: linear-gradient(to bottom, #ff1a1a, #8b0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.8));
+}
+
+/* LASER HORIZONTAL SOUS LES TITRES */
+h2::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #ff1a1a;
+    box-shadow: 0 0 15px #ff1a1a;
+    margin-top: 5px;
+    animation: laserHorizontal 3s infinite cubic-bezier(0.6, 0, 0.4, 1);
+}
+
+@keyframes laserHorizontal {
+    0% { width: 0%; left: 0; }
+    50% { width: 100%; left: 0; }
+    100% { width: 0%; left: 100%; }
+}
+
+.projet { 
+    background: rgba(13, 26, 46, 0.8);
+    border: 1px solid #0040ff;
+    border-left: 4px solid #ff1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFFET DE BALAYAGE LASER SUR LES PROJETS */
+.projet::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    animation: projectScan 4s infinite linear;
+}
+
+@keyframes projectScan {
+    to { left: 200%; }
+}
+
+.badge { 
+    border: 1px solid #0040ff;
+    border-left: 4px solid #ff1a1a;
+    transition: 0.3s;
+}
+
+.badge:hover {
+    background: #ff1a1a;
+    color: white;
+    box-shadow: 0 0 20px #ff1a1a;
+    transform: translateY(-3px);
+}
+
+/* Ligne de scan globale (Le Scanner) */
 body::before {
     content: "";
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 2px;
-    background: linear-gradient(to right, transparent, var(--energon-cyan), transparent);
-    box-shadow: 0 0 15px var(--energon-cyan);
+    background: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 15px #00ffff;
     z-index: 9999;
-    opacity: 0.7;
-    animation: scanning 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation: scanning 4s linear infinite;
 }
 
 @keyframes scanning {
-    0% { transform: translateY(-10vh); }
-    100% { transform: translateY(110vh); }
+    0% { top: -5%; }
+    100% { top: 105%; }
 }
 
-/* --- HEADER ARCHITECTURE --- */
-header { 
-    background: linear-gradient(135deg, #050b16 0%, #0d1a2e 100%);
-    color: white; 
-    padding: 50px 20px; 
-    text-align: center; 
-    border: 1px solid var(--system-blue); 
-    box-shadow: inset 0 0 20px rgba(0, 64, 255, 0.2), 0 0 30px rgba(0, 64, 255, 0.3);
-    position: relative;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 95% 100%, 5% 100%, 0% 90%); /* Découpe tech */
-}
-
-header h1 {
-    margin: 10px 0;
-    font-size: clamp(2.5em, 8vw, 4.5em); 
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    background: linear-gradient(to bottom, #ffffff 20%, var(--alert-red) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.6));
-}
-
-/* --- UNITE DE COMMANDEMENT (PROJETS) --- */
-.projet { 
-    position: relative;
-    background: var(--panel-alpha);
-    padding: 30px; 
-    margin: 30px 0; 
-    border: 1px solid var(--system-blue);
-    border-left: 6px solid var(--alert-red); 
-    backdrop-filter: blur(8px);
-    transition: 0.3s ease;
-}
-
-.projet:hover {
-    border-color: var(--energon-cyan);
-    background: rgba(13, 26, 46, 1);
-}
-
-.img-projet {
-    filter: sepia(100%) hue-rotate(140deg) brightness(0.9) contrast(1.1); /* Effet d'écran technique */
-    border: 1px solid var(--energon-cyan); 
-    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.img-projet:hover {
-    filter: none;
-    transform: scale(1.03);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-}
-
-/* --- BADGES & COMPÉTENCES --- */
-.badge { 
-    background: #050b16; 
-    color: var(--energon-cyan); 
-    padding: 8px 16px; 
-    border: 1px solid var(--system-blue);
-    border-left: 4px solid var(--alert-red);
-    font-family: 'Consolas', monospace;
-    font-size: 0.85em; 
-    transition: 0.3s;
-}
-
-.badge:hover {
-    background: var(--alert-red);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 26, 26, 0.4);
-}
-
-/* --- SENTINEL ANIMATIONS (OPTIMISÉES) --- */
-.img-avatar {
-    width: 130px; height: 130px;
-    border: 3px solid var(--alert-red);
-    animation: avatarPatrol 5s infinite ease-in-out;
-}
-
-@keyframes avatarPatrol {
-    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--alert-red)); }
-    50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--alert-red)); }
-}
-
-.security-guardian {
-    border: 1px solid var(--alert-red);
-    background: black;
-    animation: robotGuard 2s steps(2) infinite alternate;
-}
-
-@keyframes robotGuard {
-    from { opacity: 0.8; transform: skewX(-5deg); }
-    to { opacity: 1; transform: skewX(5deg); box-shadow: 0 0 15px var(--alert-red); }
-}
-
-/* --- FOOTER COMMAND CENTER --- */
 footer {
-    border-top: 2px solid var(--alert-red);
-    background: linear-gradient(to bottom, var(--panel-alpha), #000);
-    padding: 40px;
-    text-transform: uppercase;
+    border-top: 1px solid #ff1a1a;
+    background: rgba(5, 5, 5, 0.9);
 }
