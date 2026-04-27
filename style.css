@@ -1,272 +1,150 @@
-/* --- UNIVERS OPTIMUS PRIME : MISSION PROTOCOL --- */
+/* --- UNIVERS OPTIMUS PRIME : MISSION PROTOCOL v2.0 --- */
+
+:root {
+    --energon-cyan: #00ffff;
+    --alert-red: #ff1a1a;
+    --deep-space: #02050a;
+    --system-blue: #0040ff;
+    --panel-alpha: rgba(13, 26, 46, 0.9);
+}
 
 body { 
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    font-family: 'Segoe UI', Roboto, 'Oxygen', sans-serif; 
     line-height: 1.6; 
-    color: #00ffff; /* Cyan Energon pour le texte */
-    max-width: 900px; 
+    color: var(--energon-cyan);
+    max-width: 1000px; /* Légèrement élargi pour le confort */
     margin: auto; 
     padding: 20px; 
     overflow-x: hidden;
-    
-    /* FOND : Espace profond + Pulsation sombre */
-    background-color: #02050a;
+    background-color: var(--deep-space);
     background-image: 
-        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
-        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
-        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
-    background-size: 550px 550px, 350px 350px, 250px 250px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-    animation: backgroundPulse 10s infinite alternate;
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0);
+    background-size: 40px 40px; /* Grille de précision tactique */
+    animation: backgroundPulse 12s infinite alternate ease-in-out;
 }
 
 @keyframes backgroundPulse {
     0% { background-color: #02050a; }
-    100% { background-color: #0a1321; }
+    100% { background-color: #08111d; }
 }
 
-header { 
-    background: linear-gradient(135deg, #0d1a2e 0%, #1c3d5a 100%);
-    color: white; 
-    padding: 60px 20px; 
-    text-align: center; 
-    border-radius: 8px; 
-    border: 2px solid #0040ff; 
-    box-shadow: 0 0 30px rgba(0, 64, 255, 0.4);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* --- TITRE MONUMENTAL GATATECHFREE --- */
-header h1 {
-    margin: 10px 0;
-    font-size: 4.5em; 
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 15px;
-    background: linear-gradient(to bottom, #ff1a1a, #8b0000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.8));
-    animation: titleGlow 3s infinite alternate;
-}
-
-@keyframes titleGlow {
-    from { filter: drop-shadow(0 0 10px rgba(255, 26, 26, 0.6)); }
-    to { filter: drop-shadow(0 0 25px rgba(255, 26, 26, 1)); }
-}
-
-header p {
-    font-size: 1.2em;
-    letter-spacing: 4px;
-    color: #00ffff;
-    text-transform: uppercase;
-    margin-top: 15px;
-}
-
-h2 { 
-    color: #00ffff;
-    border-bottom: 2px solid #ff1a1a; 
-    padding-bottom: 10px; 
-    margin-top: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.projet { 
-    position: relative;
-    background: rgba(13, 26, 46, 0.9);
-    padding: 25px; 
-    margin: 20px 0; 
-    border-left: 5px solid #ff1a1a; 
-    border-right: 1px solid #0040ff;
-    border-top: 1px solid #0040ff;
-    border-bottom: 1px solid #0040ff;
-    border-radius: 4px; 
-    animation: blockGlow 4s infinite alternate;
-}
-
-@keyframes blockGlow {
-    from { box-shadow: 0 0 10px rgba(0, 64, 255, 0.2); }
-    to { box-shadow: 0 0 25px rgba(0, 255, 255, 0.4); }
-}
-
-.flex-images {
-    display: flex;
-    gap: 15px;
-    margin: 15px 0;
-    flex-wrap: wrap;
-}
-
-.img-projet {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid #00ffff; 
-    border-radius: 4px;
-    flex: 1;
-    min-width: 300px;
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.img-projet:hover {
-    transform: scale(1.05) rotate(1deg);
-    border-color: #ff1a1a;
-    box-shadow: 0 0 25px rgba(255, 26, 26, 0.6);
-}
-
-code {
-    background: rgba(255, 26, 26, 0.15);
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.95em;
-    color: #ff1a1a;
-    border: 1px solid rgba(255, 26, 26, 0.4);
-}
-
-.grille-competences { 
-    position: relative;
-    display: flex; 
-    gap: 12px; 
-    flex-wrap: wrap; 
-    margin: 20px 0; 
-}
-
-.badge { 
-    background: #0d1a2e; 
-    color: #00ffff; 
-    padding: 10px 18px; 
-    border-radius: 0; 
-    font-size: 0.9em; 
-    border: 1px solid #0040ff;
-    border-left: 4px solid #ff1a1a;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-footer {
-    margin-top: 60px;
-    padding: 30px;
-    text-align: center;
-    font-size: 1em;
-    color: #00ffff;
-    border-top: 1px solid #ff1a1a;
-    background: rgba(13, 26, 46, 0.7);
-    letter-spacing: 2px;
-}
-
-/* ==========================================================================
-   --- GESTION DES PERSONNAGES VIVANTS & ANIMÉS (LES GARDES) ---
-   ========================================================================== */
-
-/* 1. L'Intelligence Centrale (Optimus Girl) - Mouvement de Scanner Circulaire */
-.img-avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #ff1a1a;
-    box-shadow: 0 0 20px rgba(255, 26, 26, 0.8);
-    object-fit: cover;
-    margin-bottom: 10px;
-    
-    /* ANIMATION : Battement + Rotation légère */
-    animation: avatarPatrol 6s infinite ease-in-out;
-}
-
-@keyframes avatarPatrol {
-    0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
-    50% { transform: scale(1.1) rotate(5deg); filter: brightness(1.3) drop-shadow(0 0 30px #ff1a1a); }
-    100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
-}
-
-/* 2. Les Sentinelles (Miku) - Patrouille de Zone Horizontale et Verticale */
-.floating-sentinel {
-    position: absolute;
-    width: 110px;
-    height: auto;
-    opacity: 0.9;
-    z-index: 100;
-    pointer-events: none;
-}
-
-.s-left { 
-    left: -130px; 
-    top: 0; 
-    /* PATROUILLE : Va-et-vient agressif vers le centre */
-    animation: patrolLeft 8s infinite ease-in-out; 
-}
-
-@keyframes patrolLeft {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(40px, 100px) rotate(15deg); } /* S'approche du code */
-    50% { transform: translate(0, 200px) rotate(0deg); }
-    75% { transform: translate(-30px, 100px) rotate(-15deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-.s-right { 
-    right: -130px; 
-    top: 0; 
-    /* PATROUILLE : Mouvement en S inversé */
-    animation: patrolRight 10s infinite ease-in-out; 
-}
-
-@keyframes patrolRight {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(-50px, 150px) scale(1.15); } /* Zoom de scan */
-    66% { transform: translate(30px, 300px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
-}
-
-/* 3. Le Gardien Lapin (Sécurité) - Scan de précision saccadé */
-.security-guardian {
-    float: right;
-    width: 85px;
-    margin-left: 15px;
-    padding: 5px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid #ff1a1a;
-    box-shadow: 0 0 10px rgba(255, 26, 26, 0.5);
-    
-    /* ANIMATION : Mouvement robotique saccadé */
-    animation: robotGuard 3s steps(4) infinite alternate;
-}
-
-.security-guardian img {
-    width: 100%;
-    height: auto;
-}
-
-@keyframes robotGuard {
-    0% { transform: translateX(0); border-color: #00ffff; }
-    50% { transform: translateX(10px) translateY(-5px); }
-    100% { transform: translateX(-10px); border-color: #ff1a1a; box-shadow: 0 0 20px #ff1a1a; }
-}
-
-/* Ligne de scan robotique */
+/* --- SCANLINE GLOBAL SYSTEM --- */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: rgba(0, 255, 255, 0.6);
-    box-shadow: 0 0 15px #00ffff;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(to right, transparent, var(--energon-cyan), transparent);
+    box-shadow: 0 0 15px var(--energon-cyan);
     z-index: 9999;
-    animation: scanning 5s linear infinite;
+    opacity: 0.7;
+    animation: scanning 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 @keyframes scanning {
-    0% { top: -5%; }
-    100% { top: 105%; }
+    0% { transform: translateY(-10vh); }
+    100% { transform: translateY(110vh); }
 }
 
-/* Responsive */
-@media (max-width: 1150px) {
-    .floating-sentinel { display: none; }
+/* --- HEADER ARCHITECTURE --- */
+header { 
+    background: linear-gradient(135deg, #050b16 0%, #0d1a2e 100%);
+    color: white; 
+    padding: 50px 20px; 
+    text-align: center; 
+    border: 1px solid var(--system-blue); 
+    box-shadow: inset 0 0 20px rgba(0, 64, 255, 0.2), 0 0 30px rgba(0, 64, 255, 0.3);
+    position: relative;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 95% 100%, 5% 100%, 0% 90%); /* Découpe tech */
+}
+
+header h1 {
+    margin: 10px 0;
+    font-size: clamp(2.5em, 8vw, 4.5em); 
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    background: linear-gradient(to bottom, #ffffff 20%, var(--alert-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 26, 26, 0.6));
+}
+
+/* --- UNITE DE COMMANDEMENT (PROJETS) --- */
+.projet { 
+    position: relative;
+    background: var(--panel-alpha);
+    padding: 30px; 
+    margin: 30px 0; 
+    border: 1px solid var(--system-blue);
+    border-left: 6px solid var(--alert-red); 
+    backdrop-filter: blur(8px);
+    transition: 0.3s ease;
+}
+
+.projet:hover {
+    border-color: var(--energon-cyan);
+    background: rgba(13, 26, 46, 1);
+}
+
+.img-projet {
+    filter: sepia(100%) hue-rotate(140deg) brightness(0.9) contrast(1.1); /* Effet d'écran technique */
+    border: 1px solid var(--energon-cyan); 
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.img-projet:hover {
+    filter: none;
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* --- BADGES & COMPÉTENCES --- */
+.badge { 
+    background: #050b16; 
+    color: var(--energon-cyan); 
+    padding: 8px 16px; 
+    border: 1px solid var(--system-blue);
+    border-left: 4px solid var(--alert-red);
+    font-family: 'Consolas', monospace;
+    font-size: 0.85em; 
+    transition: 0.3s;
+}
+
+.badge:hover {
+    background: var(--alert-red);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 26, 26, 0.4);
+}
+
+/* --- SENTINEL ANIMATIONS (OPTIMISÉES) --- */
+.img-avatar {
+    width: 130px; height: 130px;
+    border: 3px solid var(--alert-red);
+    animation: avatarPatrol 5s infinite ease-in-out;
+}
+
+@keyframes avatarPatrol {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--alert-red)); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--alert-red)); }
+}
+
+.security-guardian {
+    border: 1px solid var(--alert-red);
+    background: black;
+    animation: robotGuard 2s steps(2) infinite alternate;
+}
+
+@keyframes robotGuard {
+    from { opacity: 0.8; transform: skewX(-5deg); }
+    to { opacity: 1; transform: skewX(5deg); box-shadow: 0 0 15px var(--alert-red); }
+}
+
+/* --- FOOTER COMMAND CENTER --- */
+footer {
+    border-top: 2px solid var(--alert-red);
+    background: linear-gradient(to bottom, var(--panel-alpha), #000);
+    padding: 40px;
+    text-transform: uppercase;
 }
